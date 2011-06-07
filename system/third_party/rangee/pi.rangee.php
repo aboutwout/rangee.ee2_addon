@@ -140,8 +140,11 @@ class Rangee {
 	
 	function weekdays()
 	{
+		$this->pad = $this->_fetch_param('pad', $this->pad);
+		$this->reverse = $this->_fetch_bool_param('reverse', $this->reverse);
+
 	  $data = array();
-	  
+ 
 	  foreach ($this->days as $num => $day)
 	  {
 	    $data[] = array(
@@ -153,6 +156,11 @@ class Rangee {
 	     'day' => $this->EE->lang->line($day[2])
 	    );
 	  }
+	  
+		if ($this->reverse)
+		{
+		  $data = array_reverse($data);
+		}	  
 	  
 	  $this->return_data = $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
 	  
