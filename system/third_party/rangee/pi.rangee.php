@@ -1,6 +1,16 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+* @package ExpressionEngine
+* @author Wouter Vervloet
+* @copyright Copyright (c) 2011, Baseworks
+* @license http://creativecommons.org/licenses/by-sa/3.0/
+* 
+* This work is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported.
+* To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/
+* or send a letter to Creative Commons, 171 Second Street, Suite 300,
+* San Francisco, California, 94105, USA.
+*/
 
 require PATH_THIRD."rangee/config.php";
 
@@ -82,13 +92,14 @@ class Rangee {
 		
 		$data = array();
 		
-		foreach ($range as $value)
+		foreach ($range as $number)
 		{
 		  $data[] = array(
 		    'start' => $this->start,
 		    'end' => $this->end,
 		    'limit' => $this->limit,
-		    'value' => $this->_pad_value($value, $this->pad)
+		    'number' => $number,
+		    'number:padded' => $this->_pad_value($number, $this->pad)
 		  );
 		}
 		
@@ -105,7 +116,8 @@ class Rangee {
 	  foreach ($this->months as $num => $month)
 	  {
 	    $data[] = array(
-	     'month:num' => $num,
+ 	     'month:num' => $num,
+	     'month:num:padded' => $this->_pad_value($num, $this->pad),
 	     'month:short' => $this->EE->lang->line($month[0]),
 	     'month:long' => $this->EE->lang->line($month[1]),
 	     'month' => $this->EE->lang->line($month[1])
