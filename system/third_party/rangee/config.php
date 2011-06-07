@@ -2,7 +2,7 @@
 
 if ( ! defined('RANGEE_VERSION'))
 {
-  define('RANGEE_VERSION', '0.3');
+  define('RANGEE_VERSION', '0.7');
   define('RANGEE_NAME', 'Rangee');
   define('RANGEE_DESCRIPTION', 'Output many types of different ranges in your templates. From number ranges to months/days');  
   define('RANGEE_DOCUMENTATION', 'http://support.baseworks.nl/discussions/rangee');

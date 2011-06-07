@@ -13,6 +13,16 @@ Aside the {number} tag, you also get a {number:padded} tag to output the padded 
     {/exp:rangee:numbers}
     </select>
 
+**Weekdays**
+
+    // Simple list of weekdays
+    <ul>
+      {exp:rangee:weekdays pad='2'}
+        <li>{day:num:padded}. {day:long}</li>
+      {/exp:rangee:weekdays}
+    </ul>
+
+
 
 **Months**
 
@@ -36,6 +46,6 @@ Output a list of the months. The month names are always localized in the languag
     <select name="bday_y" id="bday_y">
       <option value="">Year</option>
     {exp:rangee:numbers start='{current_time format="%Y"} - 90' end='{current_time format="%Y"} - 18' reverse='yes'}
-      <option>{value}</option>
+      <option>{number}</option>
     {/exp:rangee:numbers}
     </select>

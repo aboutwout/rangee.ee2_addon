@@ -203,21 +203,110 @@ class Rangee {
   {
 	  ob_start(); 
   ?>
-		Description:
+  
+  Rangee aims to ease the use of ranges in your EE templates.
 
-		{exp:rangee step='1' start='1' end='10'}
-		  Start: {start}<br />
-		  Number: {number}<br />
-		  End: {end}
-    {/exp:rangee}
-		------------------------------------------------------
-		
-		Parameters:
+  No more will you hardcode those pesky month dropdowns or year selects!
+  No more will you resort to PHP in your templates!
+  No more.. !
 
-		step='1'
-		start='1'
-		end='25'
-		limit='25'
+  Define a start and end value and Rangee will do the rest. You can even use basic equations in the parameter to have a truly dynamic range (handy for year selects).
+
+  Need to put output a padded value? No problem, Rangee can pad your numbers for you... so if you need a number like 007, just specify the pad='3'.
+
+  Rangee comes with the following tags:
+
+  <h4>{exp:rangee:numbers}</h4>
+  Like it suggests, this outputs a range of numbers.
+
+  <strong>Parameters</strong>
+  start = Start range (default = 1)
+  end = End range
+  limit = If the end parameter hasn't been specified, limit is added to the start value (default = 25)
+  step = The increment for each step (default = 1)
+  pad = Pad the number to a certain length
+  reverse = Reverse the order of the returned range (default = no)
+
+  <strong>Variables</strong>
+  {number} = output the value  (ex: 7)
+  {number:padded} = outputs the padded value (ex. 007)
+  {start} = The start value
+  {end} = The end value
+  {step} = The step value
+
+  <strong>Examples</strong>
+  <pre><code>// Output a range from 01 to 31
+  <select name="bday_d" id="bday_d">
+    <option value="">Day</option>
+    {exp:rangee:numbers start='1' end='31' pad='2'}
+      <option value="{number}">{number:padded}</option>
+    {/exp:rangee:numbers}
+  </select></code></pre>
+
+  <pre><code>// Output a list of years from 1993 to 1921
+  <select name="bday_y" id="bday_y">
+    <option value="">Year</option>
+  {exp:rangee:numbers start='{current_time format="%Y"} - 90' end='{current_time format="%Y"} - 18' reverse='yes'}
+    <option>{number}</option>
+  {/exp:rangee:numbers}
+  </select></code></pre>
+
+
+  <h4>{exp:rangee:months}</h4>
+  Output a list of the months. The returned values are always localized to the current users' language.
+
+  <strong>Variables</strong>
+  pad = Pad the month numbers
+  reverse = Reverse the returned months
+
+  <strong>Variables</strong>
+  {month} = The full name of the month (ex. 'January').
+  {month:long} = Same as {month} variable.
+  {month:short} = The abbreviated version of the month (ex. 'Jan').
+  {month:num} = The month number (ex. '1')
+  {month:num:padded} = The padded version of the month number (ex. 01)
+
+  <strong>Examples</strong>
+  <pre><code>// Output months
+  <select name="bday_m" id="bday_m">
+    <option value="">Month</option>
+    {exp:rangee:months}
+      <option value='{month:num}'>{month}</option>
+    {/exp:rangee:months}
+  </select>
+  </code></pre>
+
+
+  <h4>{exp:rangee:weekdays}</h4>
+  Output a list of days in the week.
+
+  <strong>Parameters</strong>
+  pad = Pad the weekday numbers
+  reverse = Reverse the returned weekdays
+
+  <strong>Variables</strong>
+  {day} = The full weekday name (ex. 'Friday')
+  {day:long} = Same as {day} variable
+  {day:medium} = The shortened name of the weekday (ex. 'Fri')
+  {day:short} = The minimal version of the weekday name (ex. 'Fr')
+  {day:num} = Number of the weekday (Sunday = 1, Saturday = 7)
+  {day:num:padded} = Padded number of the weekday
+
+  <strong>Examples</strong>
+  <pre><code>// Simple list of weekdays
+  <ul>
+    {exp:rangee:weekdays pad='2'}
+      <li>{day:num:padded}. {day:long}</li>
+    {/exp:rangee:weekdays}
+  </ul></code></pre>
+
+  Right now Rangee comes with these 3 tags, but that's just because I ran out of inspiration and things that should be in it. If you have any suggestions, drop me a line!
+
+
+
+
+
+
 
   <?php
 	  $buffer = ob_get_contents();
