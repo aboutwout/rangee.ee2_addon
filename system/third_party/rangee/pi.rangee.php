@@ -97,7 +97,7 @@ class Rangee {
 		  $data[] = array(
 		    'start' => $this->start,
 		    'end' => $this->end,
-		    'limit' => $this->limit,
+		    'step' => $this->step,
 		    'number' => $number,
 		    'number:padded' => $this->_pad_value($number, $this->pad)
 		  );
@@ -111,6 +111,10 @@ class Rangee {
 	
 	function months()
 	{
+	  
+		$this->pad = $this->_fetch_param('pad', $this->pad);
+		$this->reverse = $this->_fetch_bool_param('reverse', $this->reverse);
+	  
 	  $data = array();
 	  
 	  foreach ($this->months as $num => $month)
@@ -124,12 +128,17 @@ class Rangee {
 	    );
 	  }
 	  
+		if ($this->reverse)
+		{
+		  $data = array_reverse($data);
+		}	  
+	  
 	  $this->return_data = $this->EE->TMPL->parse_variables($this->EE->TMPL->tagdata, $data);
 	  
 	  return $this->return_data;
 	}
 	
-	function days()
+	function weekdays()
 	{
 	  $data = array();
 	  

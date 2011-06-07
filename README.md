@@ -1,7 +1,7 @@
 
 ### Examples
 
-**Days**
+**Days in month**
 
 Aside the {number} tag, you also get a {number:padded} tag to output the padded value if the 'pad' parameter has been specified. (Zero's are prefixed)
 
