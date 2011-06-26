@@ -123,8 +123,17 @@ class Rangee {
  	     'month:num' => $num,
 	     'month:num:padded' => $this->_pad_value($num, $this->pad),
 	     'month:short' => $this->EE->lang->line($month[0]),
+	     'month:short:lowercase' => strtolower($this->EE->lang->line($month[0])),
+	     'month:short:uppercase' => strtoupper($this->EE->lang->line($month[0])),
+	     'month:short:capitalize' => ucfirst($this->EE->lang->line($month[0])),
 	     'month:long' => $this->EE->lang->line($month[1]),
-	     'month' => $this->EE->lang->line($month[1])
+	     'month:long:lowercase' => strtolower($this->EE->lang->line($month[1])),
+	     'month:long:uppercase' => strtoupper($this->EE->lang->line($month[1])),
+	     'month:long:capitalize' => ucfirst($this->EE->lang->line($month[1])),
+	     'month' => $this->EE->lang->line($month[1]),
+	     'month:lowercase' => strtolower($this->EE->lang->line($month[1])),
+	     'month:uppercase' => strtoupper($this->EE->lang->line($month[1])),
+	     'month:capitalize' => ucfirst($this->EE->lang->line($month[1]))
 	    );
 	  }
 	  
@@ -151,9 +160,21 @@ class Rangee {
  	     'day:num' => $num,
 	     'day:num:padded' => $this->_pad_value($num, 2),
 	     'day:short' => $this->EE->lang->line($day[0]),
+	     'day:short:lowercase' => strtolower($this->EE->lang->line($day[0])),
+	     'day:short:uppercase' => strtoupper($this->EE->lang->line($day[0])),
+	     'day:short:capitalize' => ucfirst($this->EE->lang->line($day[0])),
 	     'day:medium' => $this->EE->lang->line($day[1]),
+	     'day:medium:lowercase' => strtolower($this->EE->lang->line($day[1])),
+	     'day:medium:uppercase' => strtoupper($this->EE->lang->line($day[1])),
+	     'day:medium:capitalize' => ucfirst($this->EE->lang->line($day[1])),
 	     'day:long' => $this->EE->lang->line($day[2]),
-	     'day' => $this->EE->lang->line($day[2])
+	     'day:long:lowercase' => strtolower($this->EE->lang->line($day[2])),
+	     'day:long:uppercase' => strtoupper($this->EE->lang->line($day[2])),
+	     'day:long:capitalize' => ucfirst($this->EE->lang->line($day[2])),
+	     'day' => $this->EE->lang->line($day[2]),
+	     'day:lowercase' => strtolower($this->EE->lang->line($day[2])),
+	     'day:uppercase' => strtoupper($this->EE->lang->line($day[2])),
+	     'day:capitalize' => ucfirst($this->EE->lang->line($day[2]))
 	    );
 	  }
 	  
