@@ -49,3 +49,8 @@ Output a list of the months. The month names are always localized in the languag
       <option>{number}</option>
     {/exp:rangee:numbers}
     </select>
+    
+    
+### Note
+
+You can output any text-based variable as lowercase, uppercase or capitalize by just appending it to the variable. For example: {month:long:lowercase} or {day:short:uppercase}
